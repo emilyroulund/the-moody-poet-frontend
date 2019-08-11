@@ -9,6 +9,7 @@ import Signup from './containers/Signup'
 import SetMoodBar from './containers/SetMoodBar'
 import Favorites from './containers/Favorites'
 import Create from './containers/Create'
+import Mood from './containers/Mood'
 
 
 class App extends React.Component {
@@ -72,6 +73,16 @@ class App extends React.Component {
                   </div>
                 ) }}
             />
+
+            <Route exact path="/mood" render={(routeProps) => {
+                return (
+                    <div id="home-page">
+                      <NavBar {...routeProps} />
+                      <SetMoodBar {...routeProps} />
+                      <Mood {...routeProps}  />
+                    </div>
+                  ) }}
+              />
 
             <Route exact path="/create" render={(routeProps) => {
                 return (

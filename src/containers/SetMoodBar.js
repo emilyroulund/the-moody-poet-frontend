@@ -13,17 +13,10 @@ class SetMoodBar extends React.Component {
   }
 
 
-  /* When the user clicks on the button,
-  toggle between hiding and showing the dropdown content */
   render(){
 
     return(
       <div className="dropdown">
-      <script>
-      /* When the user clicks on the button,
-      toggle between hiding and showing the dropdown content */
-
-      </script>
         <button onClick={this.myFunction} className="dropbtn">Set a Mood</button>
         <div id="myDropdown" className="dropdown-content">
         <li><Link to = "/profile"> Joy </Link></li>

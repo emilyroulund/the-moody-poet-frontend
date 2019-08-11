@@ -3,22 +3,23 @@ import { Link } from 'react-router-dom';
 import SinglePoemCard from "../components/SinglePoemCard"
 
 
-class Profile extends React.Component {
+
+class Mood extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       poems: [],
-
     }
   }
 
   render(){
+
     return(
-      <div id ="main">
-          <SinglePoemCard/>
+      <div>
+        <SinglePoemCard/>
       </div>
     )
   }
 }
 
-export default Profile;
+export default Mood

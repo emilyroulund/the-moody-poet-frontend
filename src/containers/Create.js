@@ -15,6 +15,15 @@ class Create extends React.Component {
 
     return(
       <div>
+        <form>
+            Title:
+            <input type="text" name="title"></input>
+            Author:
+            <input type="text" name="author"></input>
+            Text:
+            <input type="text" name="text"></input>
+            <input type="submit" value="Create"></input>
+        </form>
       </div>
     )
   }
