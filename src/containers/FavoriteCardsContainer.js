@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FavoriteCard from '../components/FavoriteCard'
 
 
 
-class Favorites extends React.Component {
+class FavoriteCardsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,10 +15,11 @@ class Favorites extends React.Component {
   render(){
 
     return(
-      <div>
+      <div class = "flex-container">
+        <FavoriteCard />
       </div>
     )
   }
 }
 
-export default Favorites
+export default FavoriteCardsContainer

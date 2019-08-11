@@ -7,9 +7,10 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import NavBar from './containers/NavBar'
 import Signup from './containers/Signup'
 import SetMoodBar from './containers/SetMoodBar'
-import Favorites from './containers/Favorites'
 import Create from './containers/Create'
 import Mood from './containers/Mood'
+import FavoriteCard from './components/FavoriteCard'
+import FavoriteCardsContainer from './containers/FavoriteCardsContainer'
 
 
 class App extends React.Component {
@@ -69,7 +70,7 @@ class App extends React.Component {
                   <div id="home-page">
                     <NavBar {...routeProps} />
                     <SetMoodBar {...routeProps} />
-                    <Favorites {...routeProps}  />
+                    <FavoriteCardsContainer {...routeProps}  />
                   </div>
                 ) }}
             />

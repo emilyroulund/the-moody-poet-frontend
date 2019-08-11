@@ -41,17 +41,23 @@ class Login extends React.Component {
 
   render(){
     return (
-      <div className='form-container'>
-        {this.state.error ? <h4>Invalid username or Password</h4> : null}
-        <form onSubmit={(e)=>{this.handleLogin(e)}}>
-          Username <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} />
-          Password <input type="password" onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} />
-          <input type='submit' value='login' />
-        </form>
-        <h2>Create a New Account?</h2>
-        <Link to="/signup" >
-        <div >Sign Up</div>
-        </Link>
+      <div className="landing-page">
+
+          <h1> How well they understood </h1>
+
+        <div className='form-container' id = "login-signup-form">
+          {this.state.error ? <h4>Invalid username or Password</h4> : null}
+          <form className="input-form" onSubmit={(e)=>{this.handleLogin(e)}}>
+            Username
+            <input className="input-form" onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} />
+            Password
+            <input className="input-form" type="password" onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} />
+            <input type='submit' value='login' className = "log-in-button"/>
+          </form>
+          <Link to="/signup" >
+            <h2 className = "sign-up-button">Create a New Account?</h2>
+          </Link>
+        </div>
       </div>
     );
   }
