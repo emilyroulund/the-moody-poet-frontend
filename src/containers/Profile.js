@@ -12,6 +12,7 @@ constructor(props) {
     poems: [],
   }
 }
+
 componentDidMount(){
   console.log(this.props)
   const token = localStorage.getItem('token')
@@ -34,9 +35,10 @@ componentDidMount(){
 }
 
 
+
 //need to do fetch
 //with data i need to set variable = to one random poem
-//send poem to backend 
+//send poem to backend
 
 
 
@@ -65,15 +67,18 @@ renderPoems = () => {
       text: "I wandered lonely as a cloud That floats on high o'er vales and hills, When all at once I saw a crowd, A host, of golden daffodils; Beside the lake, beneath the trees, Fluttering and dancing in the breeze."}
 
     ]
-  return poems.map(poem => {
-    return <SinglePoemCard poem={poem}/>
-  })
+
+  let randPoem = poems[Math.floor(Math.random() * poems.length)];
+    return <SinglePoemCard poem={randPoem}/>
 }
 
+// let myPoems = 'fetch poems from backend'
 
-  sendPoem = (poem) => {
-    return <SinglePoemCard poem={poem}/>
-  }
+
+  //
+  // sendPoem = (poem) => {
+  //   return <SinglePoemCard poem={poem}/>
+  // }
 
 
   render(){

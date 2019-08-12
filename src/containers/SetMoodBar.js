@@ -13,15 +13,17 @@ class SetMoodBar extends React.Component {
   }
 
 
-setMood = () => {
-  console.log('mood')
-}
 
 renderDropdown(){
   if (this.state.showDropdown){
     return <div id="myDropdown" className="dropdown-content">
-        <li onClick={this.setMood}><Link to = "/mood"> Joy </Link></li>
         <li onClick={this.setMood}><Link to = "/mood"> Humor </Link></li>
+        <li onClick={this.setMood}><Link to = "/mood"> Joy </Link></li>
+        <li onClick={this.setMood}><Link to = "/mood"> Passion </Link></li>
+        <li onClick={this.setMood}><Link to = "/mood"> Nostalgia </Link></li>
+        <li onClick={this.setMood}><Link to = "/mood"> Optimism </Link></li>
+        <li onClick={this.setMood}><Link to = "/mood"> Contentment </Link></li>
+        <li onClick={this.setMood}><Link to = "/mood"> Boredom </Link></li>
         <li onClick={this.setMood}><Link to = "/mood"> Pessimism </Link></li>
         <li onClick={this.setMood}><Link to = "/mood"> Frustration </Link></li>
       </div>
@@ -32,6 +34,11 @@ toggleDropdown(){
   this.setState({
     showDropdown: !this.state.showDropdown
   })
+}
+
+setMood = (e) => {
+  let mood = e.target.innerHTML
+  console.log(mood)
 }
 
   render(){
