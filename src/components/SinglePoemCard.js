@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Tag from './Tag'
 
 
 
@@ -11,14 +12,20 @@ class SinglePoemCard extends React.Component {
     }
   }
 
+makeFavorite = () => {
+  console.log('fav')
+}
+
   render(){
 
     return(
-      <div class = "flex-container">
+      <div className = "flex-container">
         <div className = "single-poem-card">
-          <h2> Title </h2>
-          <h4> Author </h4>
-          <p> This is the poem </p>
+          <button id="favorite-btn" onClick = {this.makeFavorite}> Love </button>
+          <h2> {this.props.poem.title} </h2>
+          <h4> {this.props.poem.author} </h4>
+          <p> {this.props.poem.text}</p>
+          <Tag/>
         </div>
       </div>
     )

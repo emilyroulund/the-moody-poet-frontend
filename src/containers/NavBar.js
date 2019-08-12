@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
 
@@ -11,6 +11,11 @@ class NavBar extends React.Component {
 
     }
   }
+  handleLogout() {
+    this.props.handleLogout()
+    this.props.history.push('/login')
+  }
+
 
   render(){
     return(
@@ -19,14 +24,14 @@ class NavBar extends React.Component {
           <li><Link to = "/profile"> Home</Link></li>
           <li><Link to = "/favorites"> Favorites </Link></li>
           <li><Link to = "/create"> Create </Link></li>
-          <li><Link to = "/logout"> Logout </Link></li>
+          <li> <a onClick={() => {this.handleLogout()}}>Logout</a></li>
         </div>
       </div>
     )
   }
 }
 
-export default NavBar
+export default withRouter(NavBar)
 // <nav id="mySidenav" class="sidenav">
 //   <li> Home </li>
 //   <li> Favorites </li>

@@ -38,16 +38,26 @@ class App extends React.Component {
     localStorage.setItem('token', user.token)
   }
 
-  handleLogout(user){
+  handleLogout = () => {
+    console.log('ghjk')
     this.setState({
       auth: { user: {} }
     })
     localStorage.removeItem('token')
   }
 
+  renderNavbar(){
+    if(this.state.auth.user.id){
+      return <NavBar handleLogout={this.handleLogout}/>
+    }
+
+  }
+
   render() {
     return (
       <div className="App">
+      <div id="home-page">
+      { this.renderNavbar()}
       <Route exact path='/' render={(routeProps) => {
         return <Redirect to = "/login" / >
         }}/>
@@ -58,9 +68,8 @@ class App extends React.Component {
         <Route exact path="/profile" render={(routeProps) => {
             return (
                 <div id="home-page">
-                  <NavBar {...routeProps} />
                   <SetMoodBar {...routeProps} />
-                  <Profile {...routeProps}  />
+                  <Profile {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)}/>
                 </div>
               ) }}
           />
@@ -68,9 +77,8 @@ class App extends React.Component {
           <Route exact path="/favorites" render={(routeProps) => {
               return (
                   <div id="home-page">
-                    <NavBar {...routeProps} />
                     <SetMoodBar {...routeProps} />
-                    <FavoriteCardsContainer {...routeProps}  />
+                    <FavoriteCardsContainer {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
                   </div>
                 ) }}
             />
@@ -78,9 +86,8 @@ class App extends React.Component {
             <Route exact path="/mood" render={(routeProps) => {
                 return (
                     <div id="home-page">
-                      <NavBar {...routeProps} />
                       <SetMoodBar {...routeProps} />
-                      <Mood {...routeProps}  />
+                      <Mood {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
                     </div>
                   ) }}
               />
@@ -88,8 +95,7 @@ class App extends React.Component {
             <Route exact path="/create" render={(routeProps) => {
                 return (
                     <div id="home-page">
-                      <NavBar {...routeProps} />
-                      <Create {...routeProps}  />
+                      <Create {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
                     </div>
                   ) }}
               />
@@ -98,16 +104,10 @@ class App extends React.Component {
            return <Signup {...routeProps}
            handleLogin={(user) => {this.handleLogin(user)}}/>
          }} />
-
+  </div>
       </div>
     );
   }
 }
 
 export default App;
-
-//<Navbar auth={this.state.auth} handleLogout={()=> this.handleLogout()}/>
-// <Route path="/signup" render={(routeProps) => {
-  //   return <Signup {...routeProps}
-  //   handleLogin={(user) => {this.handleLogin(user)}}/>
-  // }} />

@@ -44,8 +44,8 @@
   padding: 16px;
   font-size: 16px;
   border: none;
+  margin-top: 4em;
   cursor: pointer;
-  margin: 80px;
   width: 700px
 }
 
@@ -63,13 +63,12 @@
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: ;
-  position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   list-style: none;
+  margin: 1em
 }
 
 /* Links inside the dropdown */
@@ -160,6 +159,7 @@
   font-size: 1.2em;
   color: olive;
   font-weight: bold;
+  text-align: center;
 }
 
 #login-signup-container {
@@ -168,5 +168,29 @@
   align-content: center;
   flex-direction: column;
   margin-bottom: 6%;
+  padding: 70px 0;
+  text-align: center;
+}
 
+.create-poem-form {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid blue;
+  overflow: visible;
+  padding: 70px 0;
+  border: 3px solid green;
+  text-align: center;
+}
+
+.favorite-card {
+  background-color: white;
+  height: 250px;
+  width: 300px;
+  box-shadow: 10px 10px grey;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px;
+  overflow: scroll;
 }

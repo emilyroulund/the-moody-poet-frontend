@@ -11,14 +11,19 @@ class FavoriteCard extends React.Component {
     }
   }
 
+  removeFavorite = () =>{
+    console.log('hi')
+  }
+
   render(){
 
     return(
-      <div class = "flex-container">
+      <div className = "flex-container">
         <div className = "favorite-card">
-          <h2> Title </h2>
-          <h4> Author </h4>
-          <p> This is the poem </p>
+          <button id="favorite-btn" onClick={this.removeFavorite}> Remove </button>
+          <h2> {this.props.favorite.title} </h2>
+          <h4> {this.props.favorite.author} </h4>
+          <p> {this.props.favorite.text} </p>
         </div>
       </div>
     )
@@ -26,3 +31,13 @@ class FavoriteCard extends React.Component {
 }
 
 export default FavoriteCard
+
+
+
+
+
+// {
+  //   period: "Romantic", region: "England", year: "1804",reference: "https://www.poetryfoundation.org/poems/45521/i-wandered-lonely-as-a-cloud",
+  //   classification: "lyric", title: "I Wandered Lonely as a Cloud", author: "William Wordsworth",
+  //   text: "I wandered lonely as a cloud, That floats on high o'er vales and hills, When all at once I saw a crowd, A host, of golden daffodils; Beside the lake, beneath the trees, Fluttering and dancing in the breeze."
+  // }
