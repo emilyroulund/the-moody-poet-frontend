@@ -8,12 +8,43 @@ class Tag extends React.Component {
     super(props)
     this.state = {
       poems: [],
+      tags:[]
     }
   }
 
-  createTag = (e) => {
+  componentDidMount(){
+    this.getTags()
+  }
+
+
+  createTagSelect() {
+    return this.state.tags.map(tag => {
+      console.log('a', tag)
+      return <option value={tag.name} key={tag.id}>{tag.name}</option>
+    })
+  }
+
+  renderTags (){
+    return this.state.tags.map(tag => {
+      console.log(tag)
+      return <p>{tag.name}</p>
+    })
+  }
+
+  getTags=()=>{
+    fetch('http://localhost:3000/tags')
+    .then(resp => resp.json())
+    .then(tags => {
+      console.log('foo', tags)
+      this.setState({
+        tags:tags
+      })
+    })
+  }
+
+
+  assignPoemTag = (e) => {
     e.preventDefault()
-    console.log('hi')
     // let reqObj = {
     //   method: “POST”,
     //   headers: {
@@ -37,18 +68,24 @@ class Tag extends React.Component {
     //and it's easier to filter
   }
 
-
    render(){
-
+    console.log('statea', this.state)
     return(
-      <div>
-        <form onSubmit = {(e) => this.createTag(e)}>
-          <input type="text" name="tag"/>
-          <input id = "create-tag-btn" type="submit" value="Add Tag"/>
-        </form>
-      </div>
+        <div className="dropdown-tag">
+          <button onClick={(e) => this.assignPoemTag(e)} className="dropbtn-tag">Add Tag</button>
+          <div id="myDropdownTag" className="dropdown-content-tag">
+            <input type="text" placeholder="Search..." id="myInput-tag" onKeyUp="filterFunction()"/>
+            {this.createTagSelect()}
+          </div>
+        </div>
     )
   }
 }
 
 export default Tag
+// <form onSubmit = {(e) => this.assignPoemTag(e)}>
+//   <select>
+//       {this.getTags()}
+//   </select>
+//   <input id = "create-tag-btn" type="submit" value="Add Tag"/>
+// </form>

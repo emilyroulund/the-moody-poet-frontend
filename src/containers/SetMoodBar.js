@@ -12,37 +12,47 @@ class SetMoodBar extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.getTags()
+  }
 
+  createTagSelect() {
+    return this.state.tags.map(tag => {
+      return <li key={tag.id} onClick={(e) => this.setMood(e)}><Link to = "/mood"> {tag.name} </Link></li>
+    })
+  }
+
+  getTags=()=>{
+    fetch('http://localhost:3000/tags')
+    .then(resp => resp.json())
+    .then(tags => {
+      console.log('foo', tags)
+      this.setState({
+        tags:tags
+      })
+    })
+  }
 
 renderDropdown(){
-  if (this.state.showDropdown){
-    return <div id="myDropdown" className="dropdown-content">
-        <li onClick={this.setMood}><Link to = "/mood"> Humor </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Joy </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Passion </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Nostalgia </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Optimism </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Contentment </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Boredom </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Pessimism </Link></li>
-        <li onClick={this.setMood}><Link to = "/mood"> Frustration </Link></li>
-      </div>
+    if (this.state.showDropdown){
+      return <div id="myDropdown" className="dropdown-content">
+          {this.createTagSelect()}
+        </div>
+    }
   }
-}
 
-toggleDropdown(){
-  this.setState({
-    showDropdown: !this.state.showDropdown
-  })
-}
+  toggleDropdown(){
+    this.setState({
+      showDropdown: !this.state.showDropdown
+    })
+  }
 
-setMood = (e) => {
-  let mood = e.target.innerHTML
-  console.log(mood)
-}
+  setMood = (e) => {
+    let mood = e.target.innerHTML
+    console.log(mood.toLowerCase())
+  }
 
   render(){
-
     return(
       <div className="dropdown">
         <button onClick={() => this.toggleDropdown()} className="dropbtn">Set a Mood</button>

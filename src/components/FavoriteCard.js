@@ -12,7 +12,19 @@ class FavoriteCard extends React.Component {
   }
 
   removeFavorite = () =>{
-    console.log('hi')
+    console.log(this.props.favorite)
+    // let reqObj = {
+    //     method: 'DELETE',
+    //     headers: {
+    //      'Content-Type': 'application/json',
+    //      'Accept': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       user_id: this.props.user.id,
+    //       poem_id: this.props.favorite.id
+    //     })
+    //   };
+    // fetch(`http://localhost:3000/favorite/{this.props.favorite.id}`, reqObj)
   }
 
   render(){
