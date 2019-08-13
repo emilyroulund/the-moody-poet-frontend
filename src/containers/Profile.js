@@ -44,12 +44,6 @@ getPoems=()=>{
     })
   }
 
-
-//need to do fetch
-//with data i need to set variable = to one random poem
-//send poem to backend
-
-
 renderPoems () {
     let poems = this.state.poems
     let randPoem = poems[Math.floor(Math.random() * poems.length)];
@@ -57,7 +51,6 @@ renderPoems () {
       return <SinglePoemCard poem={randPoem} user={this.props.user}/>
     }
   }
-
 
   render(){
     return(

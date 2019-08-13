@@ -8,7 +8,8 @@ class SetMoodBar extends React.Component {
     super(props)
     this.state = {
       poems: [],
-      showDropdown: false
+      showDropdown: false,
+      tags: []
     }
   }
 
@@ -18,7 +19,7 @@ class SetMoodBar extends React.Component {
 
   createTagSelect() {
     return this.state.tags.map(tag => {
-      return <li key={tag.id} onClick={(e) => this.setMood(e)}><Link to = "/mood"> {tag.name} </Link></li>
+      return <li key={tag.id} onClick={(e) => this.filterTags(e)}><Link to = "/mood"> {tag.name} </Link></li>
     })
   }
 
@@ -26,7 +27,6 @@ class SetMoodBar extends React.Component {
     fetch('http://localhost:3000/tags')
     .then(resp => resp.json())
     .then(tags => {
-      console.log('foo', tags)
       this.setState({
         tags:tags
       })
@@ -47,9 +47,9 @@ renderDropdown(){
     })
   }
 
-  setMood = (e) => {
-    let mood = e.target.innerHTML
-    console.log(mood.toLowerCase())
+  filterTags = (e) => {
+    let tag = e.target.innerHTML
+    console.log(tag.toLowerCase())
   }
 
   render(){

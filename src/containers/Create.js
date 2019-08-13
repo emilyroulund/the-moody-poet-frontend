@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Api from '../services/api'
+import UserPoems from '../components/UserPoems'
 
 
 class Create extends React.Component {
@@ -38,7 +39,7 @@ class Create extends React.Component {
 
   createPoem = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    console.log(e.target)
     let reqObj = {
       method: 'POST',
       headers: {
@@ -54,6 +55,7 @@ class Create extends React.Component {
       })
     };
     fetch('http://localhost:3000/user_poems', reqObj)
+    e.target.reset()
   }
 
   handleInputChange(event) {
@@ -82,6 +84,7 @@ class Create extends React.Component {
           <textarea name="text" rows="20" cols="60" value={this.state.text} onChange={this.handleInputChange}></textarea>
           <input type="submit" value="Create"></input>
         </form>
+        <UserPoems/>
       </div>
     )
   }

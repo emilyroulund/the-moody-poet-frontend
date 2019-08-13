@@ -87,6 +87,7 @@ class App extends React.Component {
         <Route exact path="/create" render={(routeProps) => {
             return (
                 <div id="home-page">
+                  <SetMoodBar {...routeProps} />
                   <Create {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
                 </div>
               ) }}

@@ -19,14 +19,12 @@ class Tag extends React.Component {
 
   createTagSelect() {
     return this.state.tags.map(tag => {
-      console.log('a', tag)
       return <option value={tag.name} key={tag.id}>{tag.name}</option>
     })
   }
 
   renderTags (){
     return this.state.tags.map(tag => {
-      console.log(tag)
       return <p>{tag.name}</p>
     })
   }
@@ -35,7 +33,6 @@ class Tag extends React.Component {
     fetch('http://localhost:3000/tags')
     .then(resp => resp.json())
     .then(tags => {
-      console.log('foo', tags)
       this.setState({
         tags:tags
       })
@@ -69,7 +66,6 @@ class Tag extends React.Component {
   }
 
    render(){
-    console.log('statea', this.state)
     return(
         <div className="dropdown-tag">
           <button onClick={(e) => this.assignPoemTag(e)} className="dropbtn-tag">Add Tag</button>

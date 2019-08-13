@@ -13,18 +13,17 @@ class FavoriteCard extends React.Component {
 
   removeFavorite = () =>{
     console.log(this.props.favorite)
-    // let reqObj = {
-    //     method: 'DELETE',
-    //     headers: {
-    //      'Content-Type': 'application/json',
-    //      'Accept': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       user_id: this.props.user.id,
-    //       poem_id: this.props.favorite.id
-    //     })
-    //   };
-    // fetch(`http://localhost:3000/favorite/{this.props.favorite.id}`, reqObj)
+    let reqObj = {
+        method: 'DELETE',
+        headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          poem_id: this.props.favorite.id
+        })
+      };
+    fetch(`http://localhost:3000/favorites/${this.props.favorite.id}`, reqObj)
   }
 
   render(){
@@ -33,9 +32,9 @@ class FavoriteCard extends React.Component {
       <div className = "flex-container">
         <div className = "favorite-card">
           <button id="favorite-btn" onClick={this.removeFavorite}> Remove </button>
-          <h2> {this.props.favorite.title} </h2>
-          <h4> {this.props.favorite.author} </h4>
-          <p> {this.props.favorite.text} </p>
+          <h2> {this.props.favorite.poem.title} </h2>
+          <h4> {this.props.favorite.poem.author} </h4>
+          <p> {this.props.favorite.poem.text} </p>
         </div>
       </div>
     )
