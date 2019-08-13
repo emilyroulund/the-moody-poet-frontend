@@ -24,7 +24,7 @@ renderUserPoem = () => {
   let userPoems = this.state.userPoems
   if(userPoems){
     return userPoems.map(userPoem => {
-      return <UserPoemCard userPoem={userPoem}/>
+      return <UserPoemCard key={userPoem.id} userPoem={userPoem}/>
     })
   }
 }
