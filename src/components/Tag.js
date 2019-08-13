@@ -8,6 +8,7 @@ class Tag extends React.Component {
     super(props)
     this.state = {
       poems: [],
+      showDropdown: false,
       tags:[]
     }
   }
@@ -39,30 +40,42 @@ class Tag extends React.Component {
     })
   }
 
+  toggleDropdown(){
+    this.setState({
+      showDropdown: !this.state.showDropdown
+    })
+  }
+
+  renderDropdown(){
+    if (this.state.showDropdown){
+      return <div id="myDropdown" className="dropdown-content">
+          {this.createTagSelect()}
+        </div>
+    }
+  }
 
   assignPoemTag = (e) => {
     e.preventDefault()
+    this.toggleDropdown()
     // let reqObj = {
     //   method: “POST”,
     //   headers: {
     //    “Content-Type”: “application/json”,
     //    “Accept”: “application/json”
     //   },
-    //   body: JSON.stringify()
+    //   body: JSON.stringify({
+            //tag_id:
+            //poem_id:
+  // }
+  //)
     // };
     // fetch('http://localhost:3000/tags', reqObj)
     //   .then(resp => resp.json())
     //   .then(data => console.log(data))
 
-    // fetch('http://localhost:3000/tags', reqObj)
-    // i need to post the tag name to the tag table
-    // then i need to create a poem_tag that has
-    //the new tag_id
+    // create a poem_tag that has the new tag_id
     //and the id of the poem we're adding the tag too
-    //question: should i let users create unique tags,
-    //or let them choose from a list of pre-made tags
-    //perks of this is that I just make one post request
-    //and it's easier to filter
+
   }
 
    render(){
@@ -71,7 +84,7 @@ class Tag extends React.Component {
           <button onClick={(e) => this.assignPoemTag(e)} className="dropbtn-tag">Add Tag</button>
           <div id="myDropdownTag" className="dropdown-content-tag">
             <input type="text" placeholder="Search..." id="myInput-tag" onKeyUp="filterFunction()"/>
-            {this.createTagSelect()}
+            {this.renderDropdown()}
           </div>
         </div>
     )
