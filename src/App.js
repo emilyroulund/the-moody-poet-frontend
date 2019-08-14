@@ -18,7 +18,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       auth: { user: {} },
-      moodPoems: {}
+      moodPoems: {},
+      favorites: []
     }
   }
 
@@ -26,11 +27,11 @@ class App extends React.Component {
     this.setState({
       auth: { user }
     })
+    this.getFavorites()
     localStorage.setItem('token', user.token)
   }
 
   handleLogout = () => {
-    console.log('ghjk')
     this.setState({
       auth: { user: {} }
     })
@@ -38,7 +39,6 @@ class App extends React.Component {
   }
 
   setMoodPoems = (data) => {
-    console.log('ara', data)
     this.setState({
       moodPoems: data
     })
@@ -48,6 +48,19 @@ class App extends React.Component {
     if(this.state.auth.user.id){
       return <NavBar handleLogout={this.handleLogout}/>
     }
+  }
+
+componentDidMount(){
+
+}
+
+  getFavorites = () => {
+    fetch(`http://localhost:3000/api/v1/users/${this.state.auth.user.id}/favorites`)
+    .then(resp => resp.json())
+    .then(favorites => {
+      this.setState({
+      favorites: favorites})
+    })
   }
 
   render() {
@@ -69,7 +82,7 @@ class App extends React.Component {
           return (
               <div id="home-page">
                 <SetMoodBar {...routeProps} setMoodPoems={this.setMoodPoems}/>
-                <Profile {...routeProps} user={this.state.auth.user} handleLogin={(data) => this.handleLogin(data)} />
+                <Profile {...routeProps} favorites = {this.state.favorites} user={this.state.auth.user} handleLogin={(data) => this.handleLogin(data)} />
               </div>
             )}}
           />
@@ -87,7 +100,7 @@ class App extends React.Component {
           return (
               <div id="home-page">
                 <SetMoodBar {...routeProps} setMoodPoems={this.setMoodPoems}/>
-                <Mood {...routeProps} user={this.state.auth.user} moodPoems={this.state.moodPoems} handleLogin = {(data) => this.handleLogin(data)} />
+                <Mood {...routeProps} favorites={this.state.favorites} user={this.state.auth.user} moodPoems={this.state.moodPoems} handleLogin = {(data) => this.handleLogin(data)} />
               </div>
             )}}
           />

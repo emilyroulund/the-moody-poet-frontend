@@ -29,6 +29,14 @@ class UserPoems extends React.Component {
     })
   }
 
+  handleEdit = (userPoem) => {
+    // let newState = this.state.userPoems.filter(function(value, index, arr){
+    //   return value !== userPoem;
+    // })
+    // this.setState({
+    //   userPoems: newState
+    // })
+  }
 
 renderUserPoem = () => {
   let userPoems = this.state.userPoems

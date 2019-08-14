@@ -9,7 +9,7 @@ class Profile extends React.Component {
 constructor(props) {
   super(props)
   this.state = {
-    poems: [],
+    poems: []
   }
 }
 
@@ -52,7 +52,7 @@ renderPoems () {
       let randPoemText= randPoem.text.map((item, key) => {
         return <span key={key}>{item}<br/></span>
         })
-      return <SinglePoemCard poem={randPoem} text={randPoemText} user={this.props.user}/>
+      return <SinglePoemCard favorites={this.props.favorites} poem={randPoem} text={randPoemText} user={this.props.user}/>
     }
   }
 

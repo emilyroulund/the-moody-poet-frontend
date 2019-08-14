@@ -10,7 +10,7 @@ class FavoriteCard extends React.Component {
       poems: [],
     }
   }
-
+ 
   removeFavorite = () =>{
     console.log(this.props.favorite)
     let reqObj = {

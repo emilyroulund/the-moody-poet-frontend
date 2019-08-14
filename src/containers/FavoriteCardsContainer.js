@@ -49,8 +49,7 @@ class FavoriteCardsContainer extends React.Component {
       favorites: newState
     })
   }
-
-
+  
   renderFavorites = () => {
     let favorites = this.state.favorites
     if(favorites){

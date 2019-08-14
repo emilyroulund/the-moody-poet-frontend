@@ -54,7 +54,7 @@ class Mood extends React.Component {
         let poemText= poem.text.map((item, key) => {
           return <span key={key}>{item}<br/></span>
           })
-        return <SinglePoemCard text = {poemText} poem = {poem} user={this.props.user}/>
+        return <SinglePoemCard favorites={this.props.favorites} key={poem.id} text={poemText} poem={poem} user={this.props.user}/>
       })
     }
   }

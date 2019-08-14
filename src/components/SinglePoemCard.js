@@ -8,13 +8,12 @@ class SinglePoemCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      poems: [],
       show: true
     }
   }
 
 makeFavorite = (e) => {
-  if(this.state.show && this.notAFavorite()){
+  if(this.state.show && !this.props.favorites.includes(this.props.poem)){
     let reqObj = {
       method: 'POST',
       headers: {
@@ -33,15 +32,6 @@ makeFavorite = (e) => {
     )
   }
 }
-
-notAFavorite = () => {
-  if("this poem id is not in the favorite list, then this function returns true"){
-    return true
-  }
-  //ORRR the show state is set as true or false based on whether the favorite exists
-  //i need to determine where i want to fetch favorites
-}
-
 
   render(){
     return(
