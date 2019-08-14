@@ -9,34 +9,48 @@ class SinglePoemCard extends React.Component {
     super(props)
     this.state = {
       poems: [],
+      show: true
     }
   }
 
-makeFavorite = () => {
-  console.log('fav')
-  let reqObj = {
+makeFavorite = (e) => {
+  if(this.state.show && this.notAFavorite()){
+    let reqObj = {
       method: 'POST',
       headers: {
-       'Content-Type': 'application/json',
-       'Accept': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(
         {user_id: this.props.user.id,
-        poem_id: this.props.poem.id
+          poem_id: this.props.poem.id
+        })
+      };
+      fetch('http://localhost:3000/favorites', reqObj)
+      .then(this.setState({
+        show: !this.state.show
       })
-    };
-  fetch('http://localhost:3000/favorites', reqObj)
+    )
+  }
 }
+
+notAFavorite = () => {
+  if("this poem id is not in the favorite list, then this function returns true"){
+    return true
+  }
+  //ORRR the show state is set as true or false based on whether the favorite exists
+  //i need to determine where i want to fetch favorites
+}
+
 
   render(){
     return(
       <div className = "flex-container">
         <div className = "single-poem-card">
-          <button id="favorite-btn" onClick = {this.makeFavorite}> Love </button>
+          {this.state.show ? <button id="favorite-btn" onClick = {(e) => this.makeFavorite(e)}> Favorite </button>: null}
           <h2> {this.props.poem.title} </h2>
           <h4> {this.props.poem.author} </h4>
-          <p> {this.props.poem.text}</p>
-          <Tag user = {this.props.user}/>
+          <p> {this.props.text}</p>
         </div>
       </div>
     )
@@ -44,3 +58,4 @@ makeFavorite = () => {
 }
 
 export default SinglePoemCard
+// <Tag user = {this.props.user}/>

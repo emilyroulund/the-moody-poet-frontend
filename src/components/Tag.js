@@ -17,7 +17,6 @@ class Tag extends React.Component {
     this.getTags()
   }
 
-
   createTagSelect() {
     return this.state.tags.map(tag => {
       return <option value={tag.name} key={tag.id}>{tag.name}</option>
@@ -48,7 +47,7 @@ class Tag extends React.Component {
 
   renderDropdown(){
     if (this.state.showDropdown){
-      return <div id="myDropdown" className="dropdown-content">
+      return <div id="myDropdownTag" className="dropdown-content-tag">
           {this.createTagSelect()}
         </div>
     }
@@ -78,17 +77,33 @@ class Tag extends React.Component {
 
   }
 
+filterSearchFunction = () => {
+  console.log('filterfunction')
+    // let input = document.getElementById("myInputTag");
+    // let filter = input.value.toUpperCase();
+    // let div = document.getElementById("myDropdown");
+    // let a = div.getElementsByTagName("a");
+    // for (let i = 0; i < a.length; i++) {
+    //   let txtValue = a[i].textContent || a[i].innerText;
+    //   if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //     a[i].style.display = "";
+    //   } else {
+    //     a[i].style.display = "none";
+    //   }
+    // }
+  }
+
    render(){
     return(
         <div className="dropdown-tag">
           <button onClick={(e) => this.assignPoemTag(e)} className="dropbtn-tag">Add Tag</button>
           <div id="myDropdownTag" className="dropdown-content-tag">
-            <input type="text" placeholder="Search..." id="myInput-tag" onKeyUp="filterFunction()"/>
+            <input type="text" placeholder="Search..." id="myInputTag" onKeyUp={this.filterSearchFunction()}/>
             {this.renderDropdown()}
           </div>
         </div>
-    )
-  }
+      )
+    }
 }
 
 export default Tag

@@ -13,7 +13,6 @@ class FavoriteCardsContainer extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props)
     const token = localStorage.getItem('token')
     if (!token){
       this.props.history.push('/login')
@@ -42,36 +41,26 @@ class FavoriteCardsContainer extends React.Component {
     )
   }
 
+  handleDelete = (favorite) => {
+    let newState = this.state.favorites.filter(function(value, index, arr){
+      return value !== favorite;
+    })
+    this.setState({
+      favorites: newState
+    })
+  }
+
+
   renderFavorites = () => {
-    // const favorites = [
-      // {
-      //   author: "Emily Bronte", classification: "Rhymed Stanza", period: "Victorian",
-      //   text: "Cold in the earth—and the deep snow piled above thee, Far, far removed, cold in the dreary grave! Have I forgot, my only Love, to love thee, Severed at last by Time's all-severing wave?Cold in the earth—and the deep snow piled above thee, Far, far removed, cold in the dreary grave! Have I forgot, my only Love, to love thee, Severed at last by Time's all-severing wave?Cold in the earth—and the deep snow piled above thee, Far, far removed, cold in the dreary grave! Have I forgot, my only Love, to love thee, Severed at last by Time's all-severing wave?Cold in the earth—and the deep snow piled above thee, Far, far removed, cold in the dreary grave! Have I forgot, my only Love, to love thee, Severed at last by Time's all-severing wave?",
-      //   reference: "http://www.poetryfoundation.org/poem/172970",
-      //   region:"England", title: "Remebrance", year: "1846"
-      // },
-      // {
-      //   period: "Romantic", region: "England", year: "1804",reference: "https://www.poetryfoundation.org/poems/45521/i-wandered-lonely-as-a-cloud",
-      //   classification: "lyric", title: "I Wandered Lonely as a Cloud", author: "William Wordsworth",
-      //   text: "I wandered lonely as a cloud That floats on high o'er vales and hills, When all at once I saw a crowd, A host, of golden daffodils; Beside the lake, beneath the trees, Fluttering and dancing in the breeze."},
-      //
-      //   {author: "Emily Bronte", classification: "Rhymed Stanza", period: "Victorian",
-      //   text: "Cold in the earth—and the deep snow piled above thee, Far, far removed, cold in the dreary grave! Have I forgot, my only Love, to love thee, Severed at last by Time's all-severing wave?}",
-      //   reference: "http://www.poetryfoundation.org/poem/172970",
-      //   region:"England", title: "Remebrance", year: "1846"
-      // },
-      // {
-      //   period: "Romantic", region: "England", year: "1804",reference: "https://www.poetryfoundation.org/poems/45521/i-wandered-lonely-as-a-cloud",
-      //   classification: "lyric", title: "I Wandered Lonely as a Cloud", author: "William Wordsworth",
-      //   text: "I wandered lonely as a cloud That floats on high o'er vales and hills, When all at once I saw a crowd, A host, of golden daffodils; Beside the lake, beneath the trees, Fluttering and dancing in the breeze."}
-      //
-      // ]
-      let favorites = this.state.favorites
-      if(favorites){
-        return favorites.map(favorite => {
-          return <FavoriteCard favorite={favorite}/>
-        })
-      }
+    let favorites = this.state.favorites
+    if(favorites){
+      return favorites.map(favorite => {
+        let favoriteText= favorite.poem.text.map((item, key) => {
+          return <span key={key}>{item}<br/></span>
+          })
+        return <FavoriteCard text={favoriteText} key={favorite.id} text={favoriteText} favorite={favorite} handleDelete={this.handleDelete}/>
+      })
+    }
   }
 
   render(){

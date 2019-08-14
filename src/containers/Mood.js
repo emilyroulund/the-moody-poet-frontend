@@ -9,10 +9,6 @@ import Api from '../services/api'
 class Mood extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      poems: [],
-
-    }
   }
 
   componentDidMount(){
@@ -36,10 +32,37 @@ class Mood extends React.Component {
     // otherwise do nothing
   }
 
+  shuffle=(array)=> {
+    let currentIndex = array.length
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      // And swap it with the current element.
+      let temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+
+
+  renderPoems () {
+    if(this.props.moodPoems.poems){
+      let newPoemArray = this.shuffle(this.props.moodPoems.poems)
+      return newPoemArray.slice(0, 10).map(poem => {
+        let poemText= poem.text.map((item, key) => {
+          return <span key={key}>{item}<br/></span>
+          })
+        return <SinglePoemCard text = {poemText} poem = {poem} user={this.props.user}/>
+      })
+    }
+  }
+
   render(){
     return(
       <div id ="main">
-          <SinglePoemCard poem = {{title: 'hi'}}/>
+        {this.renderPoems()}
       </div>
     )
   }

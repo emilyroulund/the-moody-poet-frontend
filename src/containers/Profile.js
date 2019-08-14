@@ -44,11 +44,15 @@ getPoems=()=>{
     })
   }
 
+
 renderPoems () {
-    let poems = this.state.poems
+    const { poems } = this.state
     let randPoem = poems[Math.floor(Math.random() * poems.length)];
     if (randPoem) {
-      return <SinglePoemCard poem={randPoem} user={this.props.user}/>
+      let randPoemText= randPoem.text.map((item, key) => {
+        return <span key={key}>{item}<br/></span>
+        })
+      return <SinglePoemCard poem={randPoem} text={randPoemText} user={this.props.user}/>
     }
   }
 

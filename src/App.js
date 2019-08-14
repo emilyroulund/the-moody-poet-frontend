@@ -17,7 +17,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      auth: { user: {} }
+      auth: { user: {} },
+      moodPoems: {}
     }
   }
 
@@ -36,6 +37,12 @@ class App extends React.Component {
     localStorage.removeItem('token')
   }
 
+  setMoodPoems = (data) => {
+    console.log('ara', data)
+    this.setState({
+      moodPoems: data
+    })
+  }
 
   renderNavbar(){
     if(this.state.auth.user.id){
@@ -51,7 +58,8 @@ class App extends React.Component {
 
         <Route exact path='/' render={(routeProps) => {
           return <Redirect to = "/login" / >
-          }}/>
+          }}
+          />
 
         <Route exact path='/login' render={(routeProps) => {
           return <Login {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} login={this.login} setUser={this.setUser} createUser={this.createUser} /> }}
@@ -60,43 +68,43 @@ class App extends React.Component {
         <Route exact path="/profile" render={(routeProps) => {
           return (
               <div id="home-page">
-                <SetMoodBar {...routeProps} />
+                <SetMoodBar {...routeProps} setMoodPoems={this.setMoodPoems}/>
                 <Profile {...routeProps} user={this.state.auth.user} handleLogin={(data) => this.handleLogin(data)} />
               </div>
-            ) }}
+            )}}
           />
 
         <Route exact path="/favorites" render={(routeProps) => {
-            return (
-                <div id="home-page">
-                  <SetMoodBar {...routeProps} />
-                  <FavoriteCardsContainer {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
-                </div>
-              ) }}
+          return (
+              <div id="home-page">
+                <SetMoodBar {...routeProps} setMoodPoems={this.setMoodPoems}/>
+                <FavoriteCardsContainer {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
+              </div>
+            )}}
           />
 
         <Route exact path="/mood" render={(routeProps) => {
-            return (
-                <div id="home-page">
-                  <SetMoodBar {...routeProps} />
-                  <Mood {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
-                </div>
-              )}}
+          return (
+              <div id="home-page">
+                <SetMoodBar {...routeProps} setMoodPoems={this.setMoodPoems}/>
+                <Mood {...routeProps} user={this.state.auth.user} moodPoems={this.state.moodPoems} handleLogin = {(data) => this.handleLogin(data)} />
+              </div>
+            )}}
           />
 
         <Route exact path="/create" render={(routeProps) => {
-            return (
-                <div id="home-page">
-                  <SetMoodBar {...routeProps} />
-                  <Create {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
-                </div>
-              ) }}
+          return (
+              <div id="home-page">
+                <SetMoodBar {...routeProps} setMoodPoems={this.setMoodPoems}/>
+                <Create {...routeProps} user={this.state.auth.user} handleLogin = {(data) => this.handleLogin(data)} />
+              </div>
+            )}}
           />
 
         <Route path="/signup" render={(routeProps) => {
-           return <Signup {...routeProps}
-           handleLogin={(user) => {this.handleLogin(user)}}/>
-         }} />
+           return  <Signup {...routeProps} handleLogin={(user) => {this.handleLogin(user)}}/>
+          }}
+         />
   </div>
       </div>
     );

@@ -17,6 +17,9 @@ class Create extends React.Component {
       this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+
+
+
   componentDidMount(){
     const token = localStorage.getItem('token')
     if (!token){

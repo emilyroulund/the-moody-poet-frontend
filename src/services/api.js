@@ -55,5 +55,7 @@ export default {
 
   deleteUser: (user) => {
     return fetch(`http://localhost:3000/api/v1/current_user/${user.userID}`, {method: 'DELETE'})
-  }
+  },
+
+
 }

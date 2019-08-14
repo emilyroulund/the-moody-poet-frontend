@@ -20,11 +20,21 @@ class UserPoems extends React.Component {
     this.renderUserPoem()
   }
 
+  handleDelete = (userPoem) => {
+    let newState = this.state.userPoems.filter(function(value, index, arr){
+      return value !== userPoem;
+    })
+    this.setState({
+      userPoems: newState
+    })
+  }
+
+
 renderUserPoem = () => {
   let userPoems = this.state.userPoems
   if(userPoems){
     return userPoems.map(userPoem => {
-      return <UserPoemCard key={userPoem.id} userPoem={userPoem}/>
+      return <UserPoemCard key={userPoem.id} userPoem={userPoem} handleDelete={this.handleDelete}/>
     })
   }
 }
