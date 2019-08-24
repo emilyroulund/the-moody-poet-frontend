@@ -59,7 +59,6 @@ renderPoems () {
   render(){
     return(
       <div>
-      <Tag/>
         {this.renderPoems()}
       </div>
     )

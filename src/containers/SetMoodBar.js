@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Select } from 'react-select'
-
+import Select from 'react-select'
 
 
 class SetMoodBar extends React.Component {
@@ -49,7 +48,8 @@ renderDropdown(){
   }
 
   filterTags = (clickedTag) => {
-    fetch(`http://localhost:3000/tags/${clickedTag.id}`)
+    console.log(clickedTag)
+    fetch(`http://localhost:3000/tags/${clickedTag.value.id}`)
     .then(resp=>resp.json())
     .then(data => {
       this.props.setMoodPoems(data)
@@ -58,15 +58,30 @@ renderDropdown(){
   }
 
   render(){
+
+    const tagOptions = []
+
+    const tags = this.state.tags.map(tag => (
+       tagOptions.push({ label: tag.name, value: tag })
+     ));
+
     return(
-      <div className="dropdown">
-        <button onClick={() => this.toggleDropdown()} className="dropbtn">Set a Mood</button>
-        { this.renderDropdown() }
+      <div className="app">
+        <div className="container">
+          <Select options={tagOptions}
+          placeholder={'Set a Mood'}
+          onChange={this.filterTags} />
+        </div>
       </div>
     )
   }
 }
 
+
+// <div className="dropdown">
+//   <button onClick={() => this.toggleDropdown()} className="dropbtn">Set a Mood</button>
+//   { this.renderDropdown() }
+// </div>
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
