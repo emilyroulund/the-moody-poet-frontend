@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SinglePoemCard from "../components/SinglePoemCard"
 import Api from '../services/api'
-
+import Tag from "../components/Tag"
 
 class Profile extends React.Component {
 
@@ -59,6 +59,7 @@ renderPoems () {
   render(){
     return(
       <div>
+      <Tag/>
         {this.renderPoems()}
       </div>
     )

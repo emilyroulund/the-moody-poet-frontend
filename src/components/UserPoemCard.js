@@ -26,21 +26,27 @@ class UserPoemCard extends React.Component {
     .then(this.props.handleDelete(this.props.userPoem))
   }
 
-
-  editPoem = () =>{
-    let reqObj = {
-      method: 'Patch',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        user_poem_id: this.props.userPoem.id,
-        
-      })
-    };
-    fetch(`http://localhost:3000/user_poems/${this.props.userPoem.id}`, reqObj)
-    .then(this.props.handleEdit(this.props.userPoem))
+  // submitEditedPoem = () =>{
+  //   let reqObj = {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       text: this.state.text,
+  //       classification: this.state.classification,
+  //       user_id: this.props.user.id
+  //     })
+  //   };
+  //   fetch(`http://localhost:3000/user_poems/${this.props.userPoem.id}`, reqObj)
+  //   .then(this.props.handleEdit(this.props.userPoem))
+  // }
+  //
+  editPoem = () => {
+    console.log('edit')
   }
 
 render(){

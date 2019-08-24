@@ -50,9 +50,6 @@ class App extends React.Component {
     }
   }
 
-componentDidMount(){
-
-}
 
   getFavorites = () => {
     fetch(`http://localhost:3000/api/v1/users/${this.state.auth.user.id}/favorites`)

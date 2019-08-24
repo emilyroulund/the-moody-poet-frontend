@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Select from 'react-select'
 
 
 class Tag extends React.Component {
@@ -9,19 +9,37 @@ class Tag extends React.Component {
     this.state = {
       poems: [],
       showDropdown: false,
-      tags:[]
+      tags:[],
     }
   }
+
+
+
+// const tags = [
+// {label: "tag.name", value: tag.id}
+// ]
+
+
+// const App = () => {
+  //
+  // }
+
 
   componentDidMount(){
     this.getTags()
   }
 
   createTagSelect() {
+
+    // const tags = [
+    // {label: "tag.name", value: tag.id}
+    // ]
     return this.state.tags.map(tag => {
       return <option value={tag.name} key={tag.id}>{tag.name}</option>
     })
   }
+
+
 
   renderTags (){
     return this.state.tags.map(tag => {
@@ -93,15 +111,24 @@ filterSearchFunction = () => {
     // }
   }
 
+
+
    render(){
+
+    const tagOptions = []
+
+    const tags = this.state.tags.map(tag => (
+       tagOptions.push({ label: tag.name, value: tag.id })
+     ));
+
     return(
-        <div className="dropdown-tag">
-          <button onClick={(e) => this.assignPoemTag(e)} className="dropbtn-tag">Add Tag</button>
-          <div id="myDropdownTag" className="dropdown-content-tag">
-            <input type="text" placeholder="Search..." id="myInputTag" onKeyUp={this.filterSearchFunction()}/>
-            {this.renderDropdown()}
-          </div>
+      <div className="app">
+        <div className="container">
+          <Select options={tagOptions}
+          placeholder={'Set a Mood'}
+          onChange={tag => console.log(tag.label, tag.value)} />
         </div>
+      </div>
       )
     }
 }
@@ -113,3 +140,11 @@ export default Tag
 //   </select>
 //   <input id = "create-tag-btn" type="submit" value="Add Tag"/>
 // </form>
+
+// <div className="dropdown-tag">
+//   <button onClick={(e) => this.assignPoemTag(e)} className="dropbtn-tag">Add Tag</button>
+//   <div id="myDropdownTag" className="dropdown-content-tag">
+//     <input type="text" placeholder="Search..." id="myInputTag" onKeyUp={this.filterSearchFunction()}/>
+//     {this.renderDropdown()}
+//   </div>
+// </div>
