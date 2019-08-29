@@ -74,15 +74,23 @@ class Create extends React.Component {
     return(
       <div>
         <form className="create-poem-form" onSubmit={(e) => this.createPoem(e)}>
-          Title:
+          <fieldset><legend>Details</legend>
+          <span>Title:
           <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/>
-          Author:
+          </span>
+          <span>Author:
           <input type="text" name="author" value={this.state.author} onChange={this.handleInputChange}/>
-          Classification:
+          </span>
+          <span>Classification:
           <input type="text" name="classification" value={this.state.classification} onChange={this.handleInputChange}/>
-          Text:
+          </span>
+          </fieldset>
+          <fieldset>
+          <legend>Poem</legend>
           <textarea name="text" rows="20" cols="60" value={this.state.text} onChange={this.handleInputChange}></textarea>
           <input type="submit" value="Create"></input>
+          </fieldset>
+
         </form>
         <UserPoems/>
       </div>

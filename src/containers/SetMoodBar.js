@@ -67,15 +67,13 @@ renderDropdown(){
      ));
 
     return(
-      <div className="app">
-        <div className="container">
+        <div className="searchDropdown">
           <Select options={tagOptions}
           value = {this.state.selectedOption}
           placeholder='Set a Mood'
           openMenuOnClick={false}
           onChange={this.filterTags} />
         </div>
-      </div>
     )
   }
 }

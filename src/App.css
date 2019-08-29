@@ -179,13 +179,86 @@
 
 .create-poem-form {
   display: inline-block;
-  width: 100px;
-  height: 100px;
   padding: 5px;
-  /* border: 1px solid blue; */
   overflow: visible;
   padding: 70px 0;
   text-align: center;
+  border-radius: 3px;
+  max-width: 450px;
+  font-weight: bold;
+  font-size: 13px;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.create-poem-form span{
+  float: left;
+  display: block;
+  text-align: left;
+}
+
+.create-poem-form fieldset{
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  margin: 0px 0px 10px 0px;
+  border: 1px solid #FFD2D2;
+  padding: 20px;
+  background: #FFF4F4;
+  box-shadow: inset 0px 0px 15px #FFE5E5;
+  -moz-box-shadow: inset 0px 0px 15px #FFE5E5;
+  -webkit-box-shadow: inset 0px 0px 15px #FFE5E5;
+}
+
+.create-poem-form fieldset legend{
+  color: #FFA0C9;
+  border-top: 1px solid #FFD2D2;
+  border-left: 1px solid #FFD2D2;
+  border-right: 1px solid #FFD2D2;
+  border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  background: #FFF4F4;
+  padding: 0px 8px 3px 8px;
+  box-shadow: -0px -1px 2px #F1F1F1;
+  -moz-box-shadow:-0px -1px 2px #F1F1F1;
+  -webkit-box-shadow:-0px -1px 2px #F1F1F1;
+  font-weight: normal;
+  font-size: 12px;
+}
+.create-poem-form input, textarea{
+  width:250px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid #FFC2DC;
+	outline: none;
+	color: #F072A9;
+	padding: 5px 8px 5px 8px;
+	box-shadow: inset 1px 1px 4px #FFD5E7;
+	-moz-box-shadow: inset 1px 1px 4px #FFD5E7;
+	-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
+	background: #FFEFF6;
+	width:50%;
+}
+
+.form-style-3  input[type=submit]{
+	background: #EB3B88;
+	border: 1px solid #C94A81;
+	padding: 5px 15px 5px 15px;
+	color: #FFCBE2;
+	box-shadow: inset -1px -1px 3px #FF62A7;
+	-moz-box-shadow: inset -1px -1px 3px #FF62A7;
+	-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
+	border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+}
+
+.required{
+	color:red;
+	font-weight:normal;
 }
 
 .favorite-card {
@@ -257,3 +330,8 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.searchDropdown {
+  width: 300px;
+  padding: 20px;
+}
