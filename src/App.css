@@ -191,9 +191,16 @@
 }
 
 .create-poem-form span{
-  float: left;
+  float: center;
   display: block;
-  text-align: left;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  text-align: center;
+	width: 400px;
+	color: #F072A9;
+	font-weight: bold;
+	font-size: 13px;
+	text-shadow: 1px 1px 1px #f
 }
 
 .create-poem-form fieldset{
@@ -240,6 +247,10 @@
 	background: #FFEFF6;
 	width:50%;
 }
+.create-poem-form input[type=text]{
+  margin-left: 10px;
+}
+
 
 .form-style-3  input[type=submit]{
 	background: #EB3B88;

@@ -81,7 +81,7 @@ class Create extends React.Component {
           <span>Author:
           <input type="text" name="author" value={this.state.author} onChange={this.handleInputChange}/>
           </span>
-          <span>Classification:
+          <span>Classification: 
           <input type="text" name="classification" value={this.state.classification} onChange={this.handleInputChange}/>
           </span>
           </fieldset>
