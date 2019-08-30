@@ -10,7 +10,8 @@ class CreateForm extends React.Component {
       title: '',
       author: '',
       classification: '',
-      text: ''
+      text: '',
+      editMode: false
     }
       this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -48,29 +49,48 @@ class CreateForm extends React.Component {
    }
    //Note how we used the ES6 computed property name syntax to update the state key corresponding to the given input name:
 
+renderStaticDisplay(){
+  return (
+    <div>
+      <form className="create-poem-form" onSubmit={(e) => this.createPoem(e)}>
+        <fieldset>
+          <legend>Details</legend>
+          <span>Title:
+            <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/>
+          </span>
+          <span>Author:
+            <input type="text" name="author" value={this.state.author} onChange={this.handleInputChange}/>
+          </span>
+          <span>Classification:
+            <input type="text" name="classification" value={this.state.classification} onChange={this.handleInputChange}/>
+          </span>
+        </fieldset>
+        <fieldset>
+          <legend>Poem</legend>
+          <textarea name="text" rows="20" cols="60" value={this.state.text} onChange={this.handleInputChange}></textarea>
+          <input type="submit" value="Create"></input>
+        </fieldset>
+      </form>
+    </div>
+  )
+}
+
+renderEditForm(){
+  return (
+    <div>
+      <form onSubmit={(e) => this.handleFormSubmit(e)}>
+        <input onChange={(e) => this.handleInputChange(e)}/>
+        <input type='submit' />
+      </form>
+    </div>
+  )
+}
+
 
   render(){
     return(
       <div>
-        <form className="create-poem-form" onSubmit={(e) => this.createPoem(e)}>
-          <fieldset>
-            <legend>Details</legend>
-            <span>Title:
-              <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/>
-            </span>
-            <span>Author:
-              <input type="text" name="author" value={this.state.author} onChange={this.handleInputChange}/>
-            </span>
-            <span>Classification:
-              <input type="text" name="classification" value={this.state.classification} onChange={this.handleInputChange}/>
-            </span>
-          </fieldset>
-          <fieldset>
-            <legend>Poem</legend>
-            <textarea name="text" rows="20" cols="60" value={this.state.text} onChange={this.handleInputChange}></textarea>
-            <input type="submit" value="Create"></input>
-          </fieldset>
-        </form>
+        { this.state.editMode ? this.renderEditForm() : this.renderStaticDisplay()}
       </div>
     )
   }

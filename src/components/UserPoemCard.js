@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Api from '../services/api'
 
 
 class UserPoemCard extends React.Component {
