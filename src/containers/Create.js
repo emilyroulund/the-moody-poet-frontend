@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Api from '../services/api'
-import UserPoems from '../components/UserPoems'
 import CreateForm from '../components/CreateForm'
+import UserPoemCard from '../components/UserPoemCard'
 
 
 class Create extends React.Component {
@@ -10,6 +10,7 @@ class Create extends React.Component {
     super(props)
     this.state = {
       editMode: false,
+      userPoems: []
     }
   }
 
@@ -27,11 +28,27 @@ class Create extends React.Component {
           this.props.handleLogin(data)
         }
       })
+      fetch('http://localhost:3000/user_poems')
+      .then(resp => resp.json())
+      .then(userPoems => this.setState({
+        userPoems: userPoems
+      }))
+      this.renderUserPoem()
     }
     // make a call to app.js that checks if the user is logged in, in either the state or localStorage
     //if theyre not then send them to /Login
     // otherwise do nothing
   }
+
+  renderUserPoem = () => {
+    let userPoems = this.state.userPoems
+    if(userPoems){
+      return userPoems.map(userPoem => {
+        return <UserPoemCard key={userPoem.id} userPoem={userPoem} handleEditClick={()=>this.handleEditClick()} handleDelete={this.handleDelete}/>
+      })
+    }
+  }
+
 
   handleEditClick(){
     console.log('got here')
@@ -40,12 +57,20 @@ class Create extends React.Component {
      })
    }
 
+  handleDelete = (userPoem) => {
+     let newState = this.state.userPoems.filter(function(value, index, arr){
+       return value !== userPoem;
+     })
+     this.setState({
+       userPoems: newState
+     })
+   }
 
   render(){
     return(
       <div>
         <CreateForm user={this.props.user} editMode={this.state.editMode}/>
-        <UserPoems handleEditClick={()=>this.handleEditClick()}/>
+        {this.renderUserPoem()}
       </div>
     )
   }
