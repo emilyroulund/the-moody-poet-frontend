@@ -11,7 +11,6 @@ class CreateForm extends React.Component {
       author: '',
       classification: '',
       text: '',
-      editMode: false
     }
       this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -90,7 +89,7 @@ renderEditForm(){
   render(){
     return(
       <div>
-        { this.state.editMode ? this.renderEditForm() : this.renderStaticDisplay()}
+        { this.props.editMode ? this.renderEditForm() : this.renderStaticDisplay()}
       </div>
     )
   }

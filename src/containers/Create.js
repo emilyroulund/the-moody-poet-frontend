@@ -33,11 +33,19 @@ class Create extends React.Component {
     // otherwise do nothing
   }
 
+  handleEditClick(){
+    console.log('got here')
+     this.setState({
+       editMode: !this.state.editMode
+     })
+   }
+
+
   render(){
     return(
       <div>
-        <CreateForm user={this.props.user}/>
-        <UserPoems/>
+        <CreateForm user={this.props.user} editMode={this.state.editMode}/>
+        <UserPoems handleEditClick={()=>this.handleEditClick()}/>
       </div>
     )
   }

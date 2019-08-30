@@ -53,7 +53,7 @@ render(){
       <div className = "flex-container">
         <div className = "favorite-card">
           <button id="favorite-btn" onClick={this.deletePoem}> Remove</button>
-          <button id="favorite-btn" onClick={this.editPoem}> Edit </button>
+          <button id="favorite-btn" onClick={this.props.handleEditClick}> Edit </button>
           <h2> {this.props.userPoem.title} </h2>
           <h4> {this.props.userPoem.author} </h4>
           <p> {this.props.userPoem.text} </p>

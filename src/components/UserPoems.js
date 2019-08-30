@@ -10,7 +10,7 @@ class UserPoems extends React.Component {
       userPoems: [],
     }
   }
- 
+
   componentDidMount(){
     fetch('http://localhost:3000/user_poems')
     .then(resp => resp.json())
@@ -42,7 +42,7 @@ renderUserPoem = () => {
   let userPoems = this.state.userPoems
   if(userPoems){
     return userPoems.map(userPoem => {
-      return <UserPoemCard key={userPoem.id} userPoem={userPoem} handleDelete={this.handleDelete}/>
+      return <UserPoemCard key={userPoem.id} userPoem={userPoem} handleEditClick={this.props.handleEditClick} handleDelete={this.handleDelete}/>
     })
   }
 }
