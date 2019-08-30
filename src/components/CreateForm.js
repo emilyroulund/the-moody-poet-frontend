@@ -82,7 +82,7 @@ class CreateForm extends React.Component {
   render(){
     return(
       <div>
-        { this.props.editMode ? <EditForm editedPoem={this.props.editedPoem} user={this.props.user}/> : this.renderStaticDisplay()}
+        { this.props.editMode ? <EditForm editedPoem={this.props.editedPoem} user={this.props.user} updatePoem={this.props.updatePoem}/> : this.renderStaticDisplay()}
       </div>
     )
   }

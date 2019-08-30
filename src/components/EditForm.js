@@ -52,11 +52,13 @@ componentDidMount(){
         })
       };
       fetch(`http://localhost:3000/user_poems/${this.props.editedPoem.id}`, reqObj)
+      .then(resp => resp.json())
+      .then(editedPoem => this.props.updatePoem(this.props.editedPoem, editedPoem))
       .then(this.setState({
         title: '',
         author: '',
         classification: '',
-        text: '',
+        text: ''
       }))
     }
 

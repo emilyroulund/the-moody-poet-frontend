@@ -77,9 +77,8 @@ class Create extends React.Component {
     })
   }
 
-
-  updatePoem(originalPoem, editedPoem){
-    const poemIndex = this.state.userPoems.findIndex((userPoem) => userPoem === originalPoem)
+  updatePoem = (originalPoem, editedPoem) => {
+    const poemIndex = this.state.userPoems.findIndex(userPoem => userPoem === originalPoem)
     const updatedPoems = this.state.userPoems
     updatedPoems[poemIndex] = editedPoem
     this.setState({
@@ -87,15 +86,13 @@ class Create extends React.Component {
     })
   }
 
-
   render(){
     return(
       <div>
         <CreateForm
         user={this.props.user}
         addNewPoem={this.addNewPoem}
-        updatePoem={(originalPoem, editedPoem)=>{this.updatePoem(originalPoem, editedPoem)}}
-        renderUserPoem = {this.renderUserPoem}
+        updatePoem={this.updatePoem}
         editMode={this.state.editMode}
         editedPoem={this.state.editedPoem}/>
         {this.renderUserPoem()}
