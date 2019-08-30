@@ -282,6 +282,10 @@
   overflow: scroll;
 }
 
+.favorite-card p {
+  white-space: pre-wrap;
+}
+
 /* Dropdown Button */
 .dropbtn-tag {
   background-color: #4CAF50;

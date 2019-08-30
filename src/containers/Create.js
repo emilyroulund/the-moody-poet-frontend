@@ -48,6 +48,9 @@ class Create extends React.Component {
     let userPoems = this.state.userPoems
     if(userPoems){
       return userPoems.map(userPoem => {
+        // let poemText= userPoem.text.map((item, key) => {
+        //   return <span key={key}>{item}<br/></span>
+        //   })
         return <UserPoemCard key={userPoem.id} user={this.props.user} userPoem={userPoem} handleEditClick={this.handleEditClick} handleDelete={this.handleDelete}/>
       })
     }

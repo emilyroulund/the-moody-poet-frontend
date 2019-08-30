@@ -46,7 +46,7 @@ class Mood extends React.Component {
   }
 
 
-  renderPoems () {
+  renderPoems(){
     if(this.props.moodPoems.poems){
       let newPoemArray = this.shuffle(this.props.moodPoems.poems)
       return newPoemArray.slice(0, 10).map(poem => {
