@@ -33,7 +33,6 @@ class Create extends React.Component {
       .then(userPoems => this.setState({
         userPoems: userPoems
       }))
-      this.renderUserPoem()
     }
     // make a call to app.js that checks if the user is logged in, in either the state or localStorage
     //if theyre not then send them to /Login
