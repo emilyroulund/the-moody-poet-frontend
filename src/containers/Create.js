@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Api from '../services/api'
 import CreateForm from '../components/CreateForm'
+import EditForm from '../components/EditForm'
 import UserPoemCard from '../components/UserPoemCard'
 
 
@@ -10,7 +11,8 @@ class Create extends React.Component {
     super(props)
     this.state = {
       editMode: false,
-      userPoems: []
+      userPoems: [],
+      editedPoem: {}
     }
   }
 
@@ -43,20 +45,21 @@ class Create extends React.Component {
     let userPoems = this.state.userPoems
     if(userPoems){
       return userPoems.map(userPoem => {
-        return <UserPoemCard key={userPoem.id} userPoem={userPoem} handleEditClick={()=>this.handleEditClick()} handleDelete={this.handleDelete}/>
+        return <UserPoemCard key={userPoem.id} user={this.props.user} userPoem={userPoem} handleEditClick={this.handleEditClick} handleDelete={this.handleDelete}/>
       })
     }
   }
 
-
-  handleEditClick(){
-    console.log('got here')
+  handleEditClick = (userPoem) => {
+    console.log('userPoem', userPoem)
      this.setState({
-       editMode: !this.state.editMode
+       editMode: true,
+       editedPoem: userPoem
      })
    }
 
   handleDelete = (userPoem) => {
+    console.log(userPoem)
      let newState = this.state.userPoems.filter(function(value, index, arr){
        return value !== userPoem;
      })
@@ -68,7 +71,7 @@ class Create extends React.Component {
   render(){
     return(
       <div>
-        <CreateForm user={this.props.user} editMode={this.state.editMode}/>
+        <CreateForm user={this.props.user} editMode={this.state.editMode} editedPoem={this.state.editedPoem}/>
         {this.renderUserPoem()}
       </div>
     )

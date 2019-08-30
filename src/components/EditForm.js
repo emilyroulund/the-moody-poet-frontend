@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import EditForm from './EditForm'
 
 
-class CreateForm extends React.Component {
+class EditForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -16,27 +15,14 @@ class CreateForm extends React.Component {
       this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-
-  createPoem = (e) => {
-    e.preventDefault()
-    console.log(e.target)
-    let reqObj = {
-      method: 'POST',
-      headers: {
-       'Content-Type': 'application/json',
-       'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        title: this.state.title,
-        author: this.state.author,
-        text: this.state.text,
-        classification: this.state.classification,
-        user_id: this.props.user.id
-      })
-    };
-    fetch('http://localhost:3000/user_poems', reqObj)
-    e.target.reset()
-  }
+componentDidMount(){
+  this.setState({
+    title: this.props.editedPoem.title,
+    author: this.props.editedPoem.author,
+    classification: this.props.editedPoem.classification,
+    text: this.props.editedPoem.text,
+  })
+}
 
   handleInputChange(event) {
      const target = event.target;
@@ -49,12 +35,32 @@ class CreateForm extends React.Component {
    }
    //Note how we used the ES6 computed property name syntax to update the state key corresponding to the given input name:
 
+   submitEditedPoem = (e) =>{
+      e.preventDefault()
+      console.log('submit edit poem')
+      let reqObj = {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          id: this.props.editedPoem.id,
+          title: this.state.title,
+          author: this.state.author,
+          text: this.state.text,
+          classification: this.state.classification,
+          user_id: this.props.user.id
+        })
+      };
+      fetch(`http://localhost:3000/user_poems/${this.props.editedPoem.id}`, reqObj)
+      // .then(this.props.handleEditClick(this.props.editedPoem))
+    }
 
-
-  renderStaticDisplay(){
-    return (
+  render(){
+    return(
       <div>
-        <form className="create-poem-form" onSubmit={(e) => this.createPoem(e)}>
+        <form className="create-poem-form" onSubmit={(e) => this.submitEditedPoem(e)}>
           <fieldset>
             <legend>Details</legend>
             <span>Title:
@@ -76,14 +82,6 @@ class CreateForm extends React.Component {
       </div>
     )
   }
-
-  render(){
-    return(
-      <div>
-        { this.props.editMode ? <EditForm editedPoem={this.props.editedPoem} user={this.props.user}/> : this.renderStaticDisplay()}
-      </div>
-    )
-  }
 }
 
-export default CreateForm
+export default EditForm
