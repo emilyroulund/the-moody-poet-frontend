@@ -10,7 +10,6 @@ class CreateForm extends React.Component {
       author: '',
       classification: '',
       text: '',
-      newPoem: {}
     }
       this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -35,6 +34,12 @@ class CreateForm extends React.Component {
     fetch('http://localhost:3000/user_poems', reqObj)
     .then(resp => resp.json())
     .then(newPoem => this.props.addNewPoem(newPoem))
+    .then(this.setState({
+      title: '',
+      author: '',
+      classification: '',
+      text: ''
+    }))
   }
 
   handleInputChange(event) {
