@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-
 
 class FavoriteCard extends React.Component {
   constructor(props) {
@@ -10,7 +7,7 @@ class FavoriteCard extends React.Component {
       poems: [],
     }
   }
- 
+
   removeFavorite = () =>{
     console.log(this.props.favorite)
     let reqObj = {

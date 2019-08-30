@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 
 class EditForm extends React.Component {
   constructor(props) {
@@ -54,7 +52,6 @@ componentDidMount(){
         })
       };
       fetch(`http://localhost:3000/user_poems/${this.props.editedPoem.id}`, reqObj)
-      // .then(this.props.handleEditClick(this.props.editedPoem))
     }
 
   render(){
@@ -76,7 +73,7 @@ componentDidMount(){
           <fieldset>
             <legend>Poem</legend>
             <textarea name="text" rows="20" cols="60" value={this.state.text} onChange={this.handleInputChange}></textarea>
-            <input type="submit" value="Create"></input>
+            <input type="submit" value="Make Change"></input>
           </fieldset>
         </form>
       </div>

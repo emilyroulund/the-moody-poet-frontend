@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SinglePoemCard from "../components/SinglePoemCard"
 // import Tag from '../components/Tag'
 import Api from '../services/api'

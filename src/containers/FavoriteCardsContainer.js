@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import FavoriteCard from '../components/FavoriteCard'
 import Api from '../services/api'
 
@@ -49,7 +48,7 @@ class FavoriteCardsContainer extends React.Component {
       favorites: newState
     })
   }
-  
+
   renderFavorites = () => {
     let favorites = this.state.favorites
     if(favorites){

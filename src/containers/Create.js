@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Api from '../services/api'
 import CreateForm from '../components/CreateForm'
 import EditForm from '../components/EditForm'
@@ -51,10 +50,9 @@ class Create extends React.Component {
   }
 
   handleEditClick = (userPoem) => {
-    console.log('userPoem', userPoem)
      this.setState({
        editMode: true,
-       editedPoem: userPoem
+       editedPoem: userPoem,
      })
    }
 
@@ -71,7 +69,7 @@ class Create extends React.Component {
   render(){
     return(
       <div>
-        <CreateForm user={this.props.user} editMode={this.state.editMode} editedPoem={this.state.editedPoem}/>
+        <CreateForm user={this.props.user} renderUserPoem = {this.renderUserPoem} editMode={this.state.editMode} editedPoem={this.state.editedPoem}/>
         {this.renderUserPoem()}
       </div>
     )
