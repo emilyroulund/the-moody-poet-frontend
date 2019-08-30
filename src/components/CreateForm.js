@@ -1,7 +1,6 @@
 import React from 'react';
 import EditForm from './EditForm'
 
-
 class CreateForm extends React.Component {
   constructor(props) {
     super(props)
@@ -11,10 +10,10 @@ class CreateForm extends React.Component {
       author: '',
       classification: '',
       text: '',
+      newPoem: {}
     }
       this.handleInputChange = this.handleInputChange.bind(this);
   }
-
 
   createPoem = (e) => {
     e.preventDefault()
@@ -34,7 +33,8 @@ class CreateForm extends React.Component {
       })
     };
     fetch('http://localhost:3000/user_poems', reqObj)
-    e.target.reset()
+    .then(resp => resp.json())
+    .then(newPoem => this.props.addNewPoem(newPoem))
   }
 
   handleInputChange(event) {
@@ -47,8 +47,6 @@ class CreateForm extends React.Component {
      });
    }
    //Note how we used the ES6 computed property name syntax to update the state key corresponding to the given input name:
-
-
 
   renderStaticDisplay(){
     return (
