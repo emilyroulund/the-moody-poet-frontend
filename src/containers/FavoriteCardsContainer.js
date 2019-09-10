@@ -2,7 +2,6 @@ import React from 'react';
 import FavoriteCard from '../components/FavoriteCard'
 import Api from '../services/api'
 
-
 class FavoriteCardsContainer extends React.Component {
   constructor(props) {
     super(props)

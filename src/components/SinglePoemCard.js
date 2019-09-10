@@ -1,7 +1,4 @@
 import React from 'react';
-// import Tag from './Tag'
-
-
 
 class SinglePoemCard extends React.Component {
   constructor(props) {

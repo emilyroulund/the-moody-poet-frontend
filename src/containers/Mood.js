@@ -1,6 +1,5 @@
 import React from 'react';
 import SinglePoemCard from "../components/SinglePoemCard"
-// import Tag from '../components/Tag'
 import Api from '../services/api'
 
 
