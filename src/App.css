@@ -111,21 +111,37 @@
   margin-bottom: 2em
 }
 
-.landing-page {
-  background-color: black;
-  position: absolute;
-  background: url('https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1554919465/shape/mentalfloss/istock-157382617.jpg') no-repeat center fixed;
-  background-size: cover;
+
+/* SIGNUP/Login FORM */
+.home-form-container {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: url('https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1554919465/shape/mentalfloss/istock-157382617.jpg') no-repeat center fixed;
   width: 100%;
   height: 100%;
+  background-size: cover;
   align-items: flex-end;
-  justify-content: center;
+  position: absolute;
 }
 
-.saying {
-  justify-content: center;
+.home-form-container, h1 {
+  display: block;
+}
+
+.signup-form {
+  overflow: visible;
+  max-width: 450px;
+  text-shadow: 1px 1px 1px #fff;
+  display: inline-block;
+  text-align: center;
+  color: grey;
+  font-weight: bold;
+  font-size: 13px;
+  -webkit-border-radius: 10px;
+  border: 1px solid grey;
+  padding: 20px;
+  background: #F5F5F5;
 }
 
 .log-in-button {
@@ -133,10 +149,8 @@
   background: #fff;
   border: 2px solid olive;
   font-size: 17px;
-  padding: 7px 12px;
   font-weight: normal;
-  margin: 16px 0;
-  margin-right: 12px;
+  margin: 16px ;
   display: inline-block;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
@@ -147,24 +161,24 @@
   color: olive;
   background: #fff;
   border: 1px solid olive;
-  font-size: 17px;
+  font-size: 12px;
   padding: 7px 12px;
   font-weight: normal;
   margin: 6px 0;
-  margin-right: 12px;
-  display: inline-block;
+  display: inline-flex;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
-  min-width: 120px;
+  max-width: 130px;
+  text-align: right;
 }
 
 .input-form {
   flex-grow: 1;
-  padding-left: 20px;
   font-size: 1.2em;
   color: olive;
   font-weight: bold;
   text-align: center;
+  display: block;
 }
 
 #login-signup-container {
@@ -348,41 +362,4 @@
 .searchDropdown {
   width: 300px;
   padding: 20px;
-}
-
-/** Now Playing **/
-.now-playing__name {
-  font-size: 1.5em;
-  margin-bottom: 0.2em;
-}
-.now-playing__artist {
-  margin-bottom: 1em;
-}
-.now-playing__status {
-  margin-bottom: 1em;
-}
-.now-playing__img {
-  float: left;
-  margin-right: 10px;
-  text-align: right;
-  width: 45%;
-}
-.now-playing__img img {
-  max-width: 80vmin;
-  width: 100%;
-}
-.now-playing__side {
-  margin-left: 5%;
-  width: 45%;
-}
-/** Progress **/
-.progress {
-  border: 1px solid #eee;
-  height: 6px;
-  border-radius: 3px;
-  overflow: hidden;
-}
-.progress__bar {
-  background-color: #eee;
-  height: 4px;
 }

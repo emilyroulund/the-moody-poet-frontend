@@ -56,12 +56,12 @@ class Signup extends React.Component {
 
   render(){
     return (
-      <div className='form-container'>
-        <form onSubmit={(e)=>{this.handleSignup(e)}}>
+      <div className='home-form-container'>
+        <form className='signup-form' onSubmit={(e)=>{this.handleSignup(e)}}>
           Name <input onChange={(e) => this.handleNameChange(e)} value={this.state.name} />
           New Username <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} />
           New Password <input type="password" onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} />
-          <input type='submit' value='Signup' />
+          <input type='submit' value='Create New Account' />
         </form>
       </div>
     );
